@@ -1,5 +1,5 @@
 {
-  "name": "exclude-posts",
+  "name": "query-loop-exclude-posts",
   "version": "1.0.0",
   "main": "query-loop-exclude-posts.js",
   "scripts": {
