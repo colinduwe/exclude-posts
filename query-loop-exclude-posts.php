@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Query Loop Exclude Posts
  * Description: Extends the Query Loop Block to allow excluding specific posts. Select specific posts by title as well as toggle the option to exclude the current post.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Colin Duwe
  * Author URI: https://www.colinduwe.com/
  * License: GPL2+
