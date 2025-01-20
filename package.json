@@ -1,6 +1,6 @@
 {
   "name": "query-loop-exclude-posts",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "query-loop-exclude-posts.js",
   "scripts": {
     "build": "wp-scripts build",

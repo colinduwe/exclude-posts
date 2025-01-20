@@ -58,13 +58,14 @@ const withExcludePostsControl = createHigherOrderComponent( ( BlockEdit ) => {
         // Add or remove current post ID based on excludeCurrent
         useEffect(() => {
             const currentPostId = wp.data.select('core/editor').getCurrentPostId();
+            console.log(currentPostId);
 
-            if (excludeCurrent && currentPostId) {
+            if (excludeCurrent && currentPostId && Number.isInteger(currentPostId)) {
                 // Add current post ID if it's not already in the list
                 if (!exclude.includes(currentPostId)) {
                     updateQueryExclude([...exclude, currentPostId]);
                 }
-            } else if (currentPostId && exclude.includes(currentPostId)) {
+            } else if (currentPostId && Number.isInteger(currentPostId) && exclude.includes(currentPostId)) {
                 // Remove current post ID if it's included in the exclude list
                 updateQueryExclude(exclude.filter((id) => id !== currentPostId));
             }
