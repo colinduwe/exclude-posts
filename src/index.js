@@ -1,5 +1,5 @@
 import { addFilter } from '@wordpress/hooks';
-import { Fragment, useEffect } from '@wordpress/element';
+import { Fragment, useEffect, useCallback, useMemo } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, PanelRow, FormTokenField, FormToggle } from '@wordpress/components';
 import { __, sprintf } from '@wordpress/i18n';
@@ -46,14 +46,14 @@ const withExcludePostsControl = createHigherOrderComponent( ( BlockEdit ) => {
         const exclude = query.exclude || [];
         const postType = query.postType || 'post';
 
-        const updateQueryExclude = ( newExclude ) => {
+        const updateQueryExclude = useCallback(( newExclude ) => {
             setAttributes( {
                 query: {
                     ...query,
                     exclude: newExclude,
                 },
             } );
-        };
+        }, [setAttributes, query]);
 
         // Add or remove current post ID based on excludeCurrent
         useEffect(() => {
@@ -133,13 +133,21 @@ const PostSelector = withSelect( ( select, ownProps ) => {
     const posts = getEntityRecords( 'postType', postType, { per_page: -1 } );
     return { posts };
 } )( ( { posts, excludePosts, onChange } ) => {
-    const postTitles = posts
-        ? posts.map( ( post ) => ( { id: post.id, title: post.title.rendered } ) )
-        : [];
+    const postTitles = useMemo(
+        () =>
+            posts
+                ? posts.map((post) => ({ id: post.id, title: post.title.rendered }))
+                : [],
+        [posts]
+    );
 
-    const selectedTitles = postTitles
-        .filter( ( post ) => excludePosts.includes( post.id ) )
-        .map( ( post ) => post.title );
+    const selectedTitles = useMemo(
+        () =>
+            postTitles
+                .filter((post) => excludePosts.includes(post.id))
+                .map((post) => post.title),
+        [postTitles, excludePosts]
+    );
 
     return (
         <FormTokenField

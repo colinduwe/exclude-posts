@@ -1,1 +1,42 @@
+# Composer
+/vendor/
+composer.lock
+
+# Node modules
 node_modules
+package-lock.json
+yarn.lock
+
+# IDE files
+.idea
+.vscode
+*.sublime-project
+*.sublime-workspace
+.cursorrules
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Test coverage reports
+/coverage/
+.phpunit.result.cache
+/artifacts/
+/bin/
+.phpunit.cache/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Temporary files
+*.swp
+*.swo
+*~

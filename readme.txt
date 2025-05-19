@@ -2,7 +2,7 @@
 Contributors: ColinD
 Tags: Query Loop Block
 Tested up to: 6.7.1
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 Requires at least: 6.6
 Requires PHP: 8.0
 License: GPLv2 or later
@@ -41,6 +41,9 @@ want to do the following in your terminal:
 1. The controls are added to the query loop block's settings sidebar.
 
 == Changelog ==
+
+= 1.1.1 =
+* Added unit and e2e tests
 
 = 1.1.0 =
 * Fixed bug when used in the Site Editor where the exclude current post toggle
